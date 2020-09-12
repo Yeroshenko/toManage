@@ -24,12 +24,19 @@ export default {
         content: process.env.npm_package_description || '',
       },
     ],
-    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
+    link: [
+      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+      {
+        rel: 'stylesheet',
+        href:
+          'https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap',
+      },
+    ],
   },
   /*
    ** Global CSS
    */
-  css: ['vuesax/dist/vuesax.css'],
+  css: ['vuesax/dist/vuesax.min.css', '@/styles/global.sass'],
   /*
    ** Plugins to load before mounting the App
    ** https://nuxtjs.org/guide/plugins
