@@ -17,8 +17,20 @@
           v-model="password"
           name="password"
           class="auth-form__input"
-          placeholder="Пароль"
           type="password"
+          placeholder="Пароль"
+        >
+          <template #icon>
+            <LockIcon class="svg-icon" />
+          </template>
+        </vs-input>
+
+        <vs-input
+          v-model="rePassword"
+          name="rePassword"
+          class="auth-form__input"
+          type="password"
+          placeholder="Повторный пароль"
         >
           <template #icon>
             <LockIcon class="svg-icon" />
@@ -33,13 +45,11 @@
           Запомнить меня
         </vs-checkbox>
 
-        <vs-button size="large">Войти</vs-button>
+        <vs-button size="large">Зарегестрироваться</vs-button>
 
         <div class="auth-form__dialog">
-          Впервые здесь?
-          <nuxt-link to="/register" class="auth-form__link">
-            Зарегестрироавться
-          </nuxt-link>
+          Есть акаунт?
+          <nuxt-link to="/" class="auth-form__link">Войти</nuxt-link>
         </div>
       </form>
     </ShadowBlock>
@@ -60,6 +70,7 @@ export default {
   data: () => ({
     email: '',
     password: '',
+    rePassword: '',
     remember: false
   })
 }

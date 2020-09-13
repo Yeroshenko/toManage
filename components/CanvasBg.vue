@@ -8,11 +8,11 @@ export default {
     return {
       light: {
         x: 160,
-        y: 200,
+        y: 200
       },
 
       colors: ['#1F74FF', '#46C93A', '#FF4757'],
-      boxes: [],
+      boxes: []
     }
   },
   mounted() {
@@ -97,19 +97,19 @@ export default {
 
         const p1 = {
           x: this.x + this.half_size * Math.sin(this.r),
-          y: this.y + this.half_size * Math.cos(this.r),
+          y: this.y + this.half_size * Math.cos(this.r)
         }
         const p2 = {
           x: this.x + this.half_size * Math.sin(this.r + full),
-          y: this.y + this.half_size * Math.cos(this.r + full),
+          y: this.y + this.half_size * Math.cos(this.r + full)
         }
         const p3 = {
           x: this.x + this.half_size * Math.sin(this.r + full * 2),
-          y: this.y + this.half_size * Math.cos(this.r + full * 2),
+          y: this.y + this.half_size * Math.cos(this.r + full * 2)
         }
         const p4 = {
           x: this.x + this.half_size * Math.sin(this.r + full * 3),
-          y: this.y + this.half_size * Math.cos(this.r + full * 3),
+          y: this.y + this.half_size * Math.cos(this.r + full * 3)
         }
 
         return { p1, p2, p3, p4 }
@@ -159,7 +159,7 @@ export default {
             endX,
             endY,
             startX: dots[dot].x,
-            startY: dots[dot].y,
+            startY: dots[dot].y
           })
         }
 
@@ -216,22 +216,21 @@ export default {
           }
         }
       }
-    },
-  },
+    }
+  }
 }
 </script>
 
-<style>
-.canvas-bg {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: #2c343f;
-  width: 100%;
-  height: 100%;
-  z-index: -1;
-  cursor: pointer;
-}
+<style lang="sass">
+.canvas-bg
+  position: absolute
+  top: 0
+  left: 0
+  right: 0
+  bottom: 0
+  background-color: #2c343f
+  width: 100%
+  height: 100%
+  z-index: -1
+  cursor: pointer
 </style>
