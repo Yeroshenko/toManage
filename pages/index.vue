@@ -1,61 +1,59 @@
 <template>
-  <div class="auth-page">
-    <ShadowBlock>
-      <h1 class="auth-page__title">To Manage</h1>
-      <form class="auth-form">
-        <vs-input
-          v-model="email"
-          name="email"
-          class="auth-form__input"
-          placeholder="E-mail"
-        >
-          <template #icon>
-            <AtIcon class="svg-icon" />
-          </template>
-        </vs-input>
-        <vs-input
-          v-model="password"
-          name="password"
-          class="auth-form__input"
-          placeholder="Пароль"
-          type="password"
-        >
-          <template #icon>
-            <LockIcon class="svg-icon" />
-          </template>
-        </vs-input>
+  <AuthFormWrapper>
+    <form class="auth-form">
+      <vs-input
+        v-model="email"
+        primary
+        name="email"
+        class="auth-form__input"
+        placeholder="E-mail"
+      >
+        <template #icon>
+          <AtIcon class="svg-icon" />
+        </template>
+      </vs-input>
+      <vs-input
+        v-model="password"
+        primary
+        name="password"
+        class="auth-form__input"
+        placeholder="Пароль"
+        type="password"
+      >
+        <template #icon>
+          <LockIcon class="svg-icon" />
+        </template>
+      </vs-input>
 
-        <vs-checkbox
-          v-model="remember"
-          class="auth-form__checkbox"
-          name="remember"
-        >
-          Запомнить меня
-        </vs-checkbox>
+      <vs-checkbox
+        v-model="remember"
+        class="auth-form__checkbox"
+        name="remember"
+      >
+        Запомнить меня
+      </vs-checkbox>
 
-        <vs-button size="large">Войти</vs-button>
+      <vs-button size="large">Войти</vs-button>
 
-        <div class="auth-form__dialog">
-          Впервые здесь?
-          <nuxt-link to="/register" class="auth-form__link">
-            Зарегестрироавться
-          </nuxt-link>
-        </div>
-      </form>
-    </ShadowBlock>
-  </div>
+      <div class="auth-form__dialog">
+        Впервые здесь?
+        <nuxt-link to="/register" class="auth-form__link">
+          Зарегестрироавться
+        </nuxt-link>
+      </div>
+    </form>
+  </AuthFormWrapper>
 </template>
 
 <script>
-import ShadowBlock from '@/components/ShadowBlock'
+import AuthFormWrapper from '@/components/AuthFormWrapper'
 
 import LockIcon from '@/assets/icons/lock.svg'
 import AtIcon from '@/assets/icons/at.svg'
-import '@/styles/pages/auth.sass'
 
 export default {
   layout: 'auth',
-  components: { ShadowBlock, LockIcon, AtIcon },
+  components: { AuthFormWrapper, LockIcon, AtIcon },
 
   data: () => ({
     email: '',
