@@ -1,6 +1,6 @@
 <template>
   <AuthFormWrapper>
-    <form class="auth-form">
+    <form class="auth-form" @submit.prevent="handleSubmit">
       <vs-input
         v-model="email"
         primary
@@ -10,6 +10,11 @@
       >
         <template #icon>
           <AtIcon class="svg-icon" />
+        </template>
+        <!-- validation messages -->
+        <template v-if="$v.email.$dirty && $v.email.$error" #message-danger>
+          <span v-if="!$v.email.email"> Email не коректный </span>
+          <span v-else-if="!$v.email.required"> Введите email </span>
         </template>
       </vs-input>
       <vs-input
@@ -22,6 +27,16 @@
       >
         <template #icon>
           <LockIcon class="svg-icon" />
+        </template>
+        <!-- validation messages -->
+        <template
+          v-if="$v.password.$dirty && $v.password.$error"
+          #message-danger
+        >
+          <span v-if="!$v.password.minLength">
+            Минимальная длина {{ $v.password.$params.minLength.min }} символов
+          </span>
+          <span v-else-if="!$v.email.required"> Введите пароль </span>
         </template>
       </vs-input>
 
@@ -46,8 +61,9 @@
 </template>
 
 <script>
-import AuthFormWrapper from '@/components/AuthFormWrapper'
+import { required, email, minLength } from 'vuelidate/lib/validators'
 
+import AuthFormWrapper from '@/components/AuthFormWrapper'
 import LockIcon from '@/assets/icons/lock.svg'
 import AtIcon from '@/assets/icons/at.svg'
 
@@ -58,7 +74,25 @@ export default {
   data: () => ({
     email: '',
     password: '',
-    remember: false
-  })
+    remember: true
+  }),
+
+  validations: {
+    email: { required, email },
+    password: { required, minLength: minLength(6) }
+  },
+
+  methods: {
+    handleSubmit(e) {
+      console.log(this.$v)
+      // stop here if form is invalid
+      this.$v.$touch()
+      if (this.$v.$invalid) {
+        return
+      }
+
+      alert('OK')
+    }
+  }
 }
 </script>

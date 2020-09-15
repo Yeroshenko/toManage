@@ -115,7 +115,6 @@ export default {
         return { p1, p2, p3, p4 }
       }
       this.rotate = function () {
-        // debugger
         const speed = (60 - this.half_size) / 20
 
         this.r += speed * 0.002
